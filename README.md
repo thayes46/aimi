@@ -1,7 +1,7 @@
 # corys-shitty-robot
 Physical aimbot for Counter Strike :Global Offensive
 
-## How to load arduino
+## How to load pro micro
 An arduino to be used with this project needs to be flashed only once, after that every time the arduino receives power it will run that same code.
 
 1. Install the arduino IDE on the raspberry pi
