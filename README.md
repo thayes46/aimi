@@ -14,3 +14,6 @@ An arduino to be used with this project needs to be flashed only once, after tha
 <pre><code> arduino --verify --upload --board arduino:avr:nano:atmega328P --port /dev/tty/USB0 ./arduinoKBM/arduinoKBM.ino</pre></code>
 
 *Note: --board argument should correspond with the board you are using (nano, mega, etc.). For more information visit https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc#options
+
+If you receive an error along the lines of "permission denied: /dev/tty/USBn or /dev/tty/ACMn" run 
+<pre><code> sudo adduser [your_username] dialout </pre></code>
