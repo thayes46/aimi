@@ -80,7 +80,7 @@ void receiveEvent(int numEvents) {
         Mouse.move(amountX, amountY, 0);
         break;
       case 'h' :
-        while (Wire.available() < 2) {
+        while (Wire.available() < 1) {
         };
         signed byte amountScroll = Wire.read();
         Mouse.move(0, 0, amountScroll);
