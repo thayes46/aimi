@@ -72,12 +72,16 @@ void receiveEvent(int numEvents) {
       case 'v' :
         Keyboard.write(' ');
         break;
-      case 'g' :  
+      case 'g' :
+        while (Wire.available() < 2) {
+        }; 
         signed byte amountX = Wire.read();
         signed byte amountY = Wire.read();
         Mouse.move(amountX, amountY, 0);
         break;
       case 'h' :
+        while (Wire.available() < 2) {
+        };
         signed byte amountScroll = Wire.read();
         Mouse.move(0, 0, amountScroll);
         break;
