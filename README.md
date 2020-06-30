@@ -3,7 +3,7 @@ Physical aimbot for Counter Strike :Global Offensive
 
 ## Raspbery Pi setup
 Install necessary packages
-<pre><code> sudo apt-get update
+<pre><code>sudo apt-get update
 sudo apt-get install python-smbus python3-smbus python-dev python3-dev pip
 sudo apt-get install i2c-tools
 </pre></code>
