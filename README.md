@@ -1,4 +1,4 @@
-# corys-shitti-robot
+# corys-shitty-robot
 Physical aimbot for Counter Strike :Global Offensive
 
 ## Raspbery Pi setup
