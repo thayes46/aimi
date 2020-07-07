@@ -14,9 +14,9 @@ Install this repo
 git clone https://github.com/thayes46/corys-shitty-robot.git
 </pre></code>
 
-Turn on the virtual environment for python
+Install all dependent packages
 <pre><code>
-source corys-shitty-robot/venv/bin/activate
+sudo pip install numpy opencv-python smbus
 </pre></code>
 
 ## How to load Arduino micro for Keyboard and Mouse simulation
