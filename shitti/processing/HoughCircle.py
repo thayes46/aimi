@@ -2,7 +2,7 @@ import numpy as np
 import cv2 as cv
 
 # read in image "circles.jpg" and convert to grayscale
-cimg = cv.imread('..images/circles.jpg')
+cimg = cv.imread('../../images/circles.jpg')
 img = cv.cvtColor(cimg, cv.COLOR_BGR2GRAY)
 img = cv.medianBlur(img, 5)
 
