@@ -2,12 +2,7 @@
 Physical aimbot for [Counter-Strike: Global Offensive](https://blog.counter-strike.net).
 
 ## Raspbery Pi setup
-Install necessary packages:
-```
-sudo apt-get update
-```
-
-Enable I2C connections on the pi in the config:
+Enable I2C connections on the Pi in the config:
 ```
 sudo raspi-config
 ```
@@ -25,14 +20,14 @@ sudo pip install numpy opencv-python smbus
 ## How to Load Arduino Micro for Keyboard and Mouse Simulation
 An Arduino to be used with this project needs to be flashed only once, after that every time the Arduino receives power it will run that same code.
 
-*Note: arduino used as a KBM must have the ATmega32u4 chip for native USB support
+*Note: Arduino used as a KBM must have the ATMega32u4 chip for native USB support
 
 1. Install the arduino IDE on the Raspberry Pi:
 ```
 sudo apt-get install arduino
 ```
 
-2. Detect which port the arduino is on, if you are unsure which is the arduino, run this command with and without it plugged in to the pi, and whatever one shows up when you plug it in, that's it. It should be either USBn or ACMn.
+2. Detect which port the Arduino is on, if you are unsure which is the Arduino, run this command with and without it plugged in to the Pi, and whatever one shows up when you plug it in, that's it. It should be either `USBn` or `ACMn`.
 ```
 ls /dev/tty*
 ```
@@ -44,7 +39,7 @@ arduino --verify --upload --board arduino:avr:micro:atmega32u4 --port /dev/tty/U
 
 *Note: `--board` argument should correspond with the board you are using (Leonardo, Micro, etc.). For more information visit [here](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc#options)
 
-If you receive an error along the lines of "permission denied: /dev/tty/USBn or /dev/tty/ACMn" run 
+If you receive an error along the lines of `permission denied: /dev/tty/USBn or /dev/tty/ACMn` run 
 ```
 sudo adduser [your_username] dialout
 ```
