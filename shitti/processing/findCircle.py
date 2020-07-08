@@ -3,8 +3,8 @@ import numpy as np
 
 
 # define function Find Circle
-# inputs: video source, minimum distance between circles, minimum circle radius,
-# and maximum circle radius
+# inputs: video source, minimum distance between circles, minimum circle
+# radius, and maximum circle radius
 # outputs: center of circle, radius of circle, rgb color of circle
 def findcircle(source, mindist, minrad, maxrad):
     # start capturing video. 0 is onboard webcam, will need to change that for
