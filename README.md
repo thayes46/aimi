@@ -14,7 +14,7 @@ git clone https://github.com/thayes46/corys-shitty-robot.git
 
 Install all dependent packages:
 ```
-python3 -m pip install numpy opencv-python smbus
+python3 -m pip install -r requirements.txt
 ```
 
 ## How to Load Arduino Micro for Keyboard and Mouse Simulation
@@ -39,7 +39,7 @@ arduino --verify --upload --board arduino:avr:micro:atmega32u4 --port /dev/tty/U
 
 *Note: `--board` argument should correspond with the board you are using (Leonardo, Micro, etc.). For more information visit [here](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc#options)
 
-If you receive an error along the lines of `permission denied: /dev/tty/USBn or /dev/tty/ACMn` run 
+If you receive an error along the lines of `permission denied: /dev/tty/USBn or /dev/tty/ACMn` run
 ```
 sudo adduser [your_username] dialout
 ```
