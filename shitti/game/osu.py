@@ -6,5 +6,5 @@ from ..processing import circles
 
 def run():
     print('before call')
-    print(circles.findcircle("../../images/BasicallyOsu.gif", 1, 1, 50))
+    circles.findcircle("../../images/BasicallyOsu.gif", 30, 1, 50)
     print('after call')

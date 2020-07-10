@@ -6,7 +6,8 @@ def findcircle(source, mindist, minrad, maxrad):
     # Capture Card
     print(source, mindist, minrad, maxrad)
     cap = cv.VideoCapture(0)
-    while 1:
+    counter = 0
+    while counter < 5:
         # read frame
         _, frame = cap.read()
         size = frame.shape
@@ -15,18 +16,22 @@ def findcircle(source, mindist, minrad, maxrad):
         circles = cv.HoughCircles(bwframe, cv.HOUGH_GRADIENT, 1, mindist,
                                   param1=50, param2=30, minRadius=minrad,
                                   maxRadius=maxrad)
-        circles = np.uint16(np.around(circles))
+        # circles = np.uint16(np.around(circles))
         print(circles)
+        cv.imshow('current frame', frame)
 
         # iterate through list of circles. Make green circle around
         # circumference and small red dot at center
-        for i in circles[0, :]:
-            # make sure that circle is inside the frame
-            # can probably remove for Osu! but need for webcam
-            print("bonjour")
-            if i[0] in range(size[0]) and i[1] in range(size[1]):
-                print("test")
-        break
+        try:
+            for i in circles[0, :]:
+                # make sure that circle is inside the frame
+                # can probably remove for Osu! but need for webcam
+                print("bonjour")
+                if i[0] in range(size[0]) and i[1] in range(size[1]):
+                    print("test")
+            counter = counter + 1
+        except TypeError:
+            print('no circles found')
 
     return 1
 
