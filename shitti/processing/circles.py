@@ -7,6 +7,9 @@ def findcircle(source, mindist, minrad, maxrad):
     # Capture Card
     print(source, mindist, minrad, maxrad)
     cap = cv.VideoCapture(source)
+    if not cap.isOpened():
+        print("error opening video feed")
+        return 0
     while 1:
         # read frame
         _, frame = cap.read()
@@ -41,11 +44,10 @@ def findcircle(source, mindist, minrad, maxrad):
                     # i[0] = x, i[1] = y, i[2] = radius
                     yield [i, r, g, b]
 
-                    """# print centerpoint, radius, and color to console
-                    print('Center: (%d,%d)' % (i[0],i[1]))
+                    # print centerpoint, radius, and color to console
+                    print('Center: (%d,%d)' % (i[0], i[1]))
                     print('Radius: %d' % i[2])
-                    print('Color (RGB): (%d,%d,%d)' % (r,g,b))"""
-                    print(i)
+                    print('Color (RGB): (%d,%d,%d)' % (r, g, b))
         except TypeError:
             continue
 
