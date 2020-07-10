@@ -12,12 +12,38 @@ def findcircle(source, mindist, minrad, maxrad):
         size = frame.shape
         print(size)
         bwframe = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-        print(bwframe, cv.HOUGH_GRADIENT, 1, mindist, 50, 30, minrad, maxrad)
         circles = cv.HoughCircles(bwframe, cv.HOUGH_GRADIENT, 1, mindist,
                                   param1=50, param2=30, minRadius=minrad,
                                   maxRadius=maxrad)
         circles = np.uint16(np.around(circles))
         print(circles)
+
+        # iterate through list of circles. Make green circle around
+        # circumference and small red dot at center
+        for i in circles[0, :]:
+            # make sure that circle is inside the frame
+            # can probably remove for Osu! but need for webcam
+            print("bonjour")
+            # if i[0] in range(size[0]) and i[1] in range(size[1]):
+            #     print("test")
+                # cv.circle(frame, (i[0], i[1]), i[2], (0, 0, 255), 2)
+                # cv.circle(frame, (i[0], i[1]), 2, (0, 255, 255), 3)
+                #
+                # # this should be getting the bgr values at the center of
+                # # each circle
+                # b = frame.item(int(i[0]), int(i[1]), 0)
+                # g = frame.item(int(i[0]), int(i[1]), 1)
+                # r = frame.item(int(i[0]), int(i[1]), 2)
+                #
+                # # return x-center, y-center, radius, r value, g value, and
+                # # b value and continue running function
+                # # i[0] = x, i[1] = y, i[2] = radius
+                # yield [i, r, g, b]
+                #
+                # """# print centerpoint, radius, and color to console
+                # print('Center: (%d,%d)' % (i[0],i[1]))
+                # print('Radius: %d' % i[2])
+                # print('Color (RGB): (%d,%d,%d)' % (r,g,b))"""
         break
 
     return 1
