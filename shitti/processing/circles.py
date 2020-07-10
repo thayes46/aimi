@@ -66,7 +66,9 @@ def findcircle(source, mindist, minrad, maxrad):
     cv.destroyAllWindows()
 
 
-def houghcircle(image):
+# reads the image, if it should wait for a keypress before moving on, and if it
+# should print all found circle data to the console
+def houghcircle(image, wait, printData):
     # read in image "circles.jpg" and convert to grayscale
     img = cv.imread(image)
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -90,15 +92,19 @@ def houghcircle(image):
         g = img[int(i[0]), int(i[1]), 1]
         r = img[int(i[0]), int(i[1]), 2]
 
-        # print shit
-        print('Center: (%d,%d)' % (i[0], i[1]))
-        print('Radius: %d' % i[2])
-        print('Color (RGB): (%d,%d,%d)' % (r, g, b))
+        if printData:
+            # print shit
+            print('Center: (%d,%d)' % (i[0], i[1]))
+            print('Radius: %d' % i[2])
+            print('Color (RGB): (%d,%d,%d)' % (r, g, b))
 
-    # show image until any key is pressed
-    cv.imshow('detected circles', img)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
+    if wait:
+        # show image until any key is pressed
+        cv.imshow('detected circles', img)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+    else:
+        cv.imshow('detected circles', img)
 
 
 # Examples for circles
