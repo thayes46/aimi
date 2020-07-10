@@ -1,12 +1,18 @@
 import cv2 as cv
 import numpy as np
 
+def findcircle(source, mindist, minrad, maxrad):
+    # start capturing video. 0 is onboard webcam, will need to change that for
+    # Capture Card
+    print(source)
+    cap = cv.VideoCapture(0)
+    return 1
 
 # define function Find Circle
 # inputs: video source, minimum distance between circles, minimum circle
 # radius, and maximum circle radius
 # outputs: center of circle, radius of circle, rgb color of circle
-def findcircle(source, mindist, minrad, maxrad):
+def findcircle2(source, mindist, minrad, maxrad):
     # start capturing video. 0 is onboard webcam, will need to change that for
     # Capture Card
 
@@ -109,7 +115,7 @@ def houghcircle(image, wait, printData):
         cv.imshow('detected circles', img)
 
 
-print('after all function definitions')
+#print('after all function definitions')
 # Examples for circles
 # call of findCircle
 # ret = findcircle(0, 500, 0, 50)
