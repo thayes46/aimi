@@ -2,9 +2,8 @@
 from ..processing import circles
 
 
-# ideally in deployment mss is replaced with capture card reads
-
 def run():
+
     print('before call')
     ret = circles.findcircle(0, 500, 0, 50)
     for ind in ret:
