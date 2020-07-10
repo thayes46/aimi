@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 
+
 def findcircle(source, mindist, minrad, maxrad):
     # start capturing video. 0 is onboard webcam, will need to change that for
     # Capture Card
@@ -34,6 +35,7 @@ def findcircle(source, mindist, minrad, maxrad):
             print('no circles found')
 
     return 1
+
 
 # define function Find Circle
 # inputs: video source, minimum distance between circles, minimum circle
@@ -141,8 +143,7 @@ def houghcircle(image, wait, printData):
     else:
         cv.imshow('detected circles', img)
 
-
-#print('after all function definitions')
+# print('after all function definitions')
 # Examples for circles
 # call of findCircle
 # ret = findcircle(0, 500, 0, 50)
