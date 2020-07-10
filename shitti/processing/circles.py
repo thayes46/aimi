@@ -12,6 +12,7 @@ def findcircle(source, mindist, minrad, maxrad):
         size = frame.shape
         print(size)
         bwframe = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+        print(bwframe, cv.HOUGH_GRADIENT, 1, mindist, 50, 30, minrad, maxrad)
         circles = cv.HoughCircles(bwframe, cv.HOUGH_GRADIENT, 1, mindist,
                                   param1=50, param2=30, minRadius=minrad,
                                   maxRadius=maxrad)
