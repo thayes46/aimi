@@ -22,7 +22,6 @@ def findcircle(source, mindist, minrad, maxrad):
         except TypeError:
             print('we take those?')
 
-
         # iterate through list of circles. Make green circle around
         # circumference and small red dot at center
         try:
@@ -51,7 +50,7 @@ def findcircle(source, mindist, minrad, maxrad):
         except TypeError:
             print('we also take those')
 
-        #show each frame
+        # show each frame
         cv.imshow("Feed", frame)
         k = cv.waitKey(5) & 0xFF
         if k == 27:
