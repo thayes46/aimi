@@ -4,8 +4,21 @@ import numpy as np
 def findcircle(source, mindist, minrad, maxrad):
     # start capturing video. 0 is onboard webcam, will need to change that for
     # Capture Card
-    print(source)
+    print(source, mindist, minrad, maxrad)
     cap = cv.VideoCapture(0)
+    while 1:
+        # read frame
+        _, frame = cap.read()
+        size = frame.shape
+        print(size)
+        bwframe = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+        circles = cv.HoughCircles(bwframe, cv.HOUGH_GRADIENT, 1, mindist,
+                                  param1=50, param2=30, minRadius=minrad,
+                                  maxRadius=maxrad)
+        circles = np.uint16(np.around(circles))
+        print(circles)
+        break
+
     return 1
 
 # define function Find Circle
