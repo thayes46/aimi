@@ -9,6 +9,8 @@ import numpy as np
 def findcircle(source, mindist, minrad, maxrad):
     # start capturing video. 0 is onboard webcam, will need to change that for
     # Capture Card
+
+    print('Inside findcircle function')
     cap = cv.VideoCapture(source)
 
     while 1:
@@ -107,15 +109,16 @@ def houghcircle(image, wait, printData):
         cv.imshow('detected circles', img)
 
 
+print('after all function definitions')
 # Examples for circles
 # call of findCircle
-ret = findcircle(0, 500, 0, 50)
+# ret = findcircle(0, 500, 0, 50)
 
 # prints ind for each iteration of the function
 # ind[0][0] = x, ind[0][1] = y, ind[0][2] = radius, ind[1] = r, ind[2] = g,
 # ind[3] = b
-for ind in ret:
-    print(ind[1])
+# for ind in ret:
+#     print(ind[1])
 
 # call of houghcircle on test image
-houghcircle('../../images/circles.jpg')
+# houghcircle('../../images/circles.jpg')
