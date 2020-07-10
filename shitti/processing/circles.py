@@ -7,12 +7,10 @@ def findcircle(source, mindist, minrad, maxrad):
     # Capture Card
     print(source, mindist, minrad, maxrad)
     cap = cv.VideoCapture(source)
-    counter = 0
-    while counter < 5:
+    while 1:
         # read frame
         _, frame = cap.read()
         size = frame.shape
-        print(size)
         bwframe = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
         circles = cv.HoughCircles(bwframe, cv.HOUGH_GRADIENT, 1, mindist,
                                   param1=50, param2=30, minRadius=minrad,
@@ -20,7 +18,7 @@ def findcircle(source, mindist, minrad, maxrad):
         try:
             circles = np.uint16(np.around(circles))
         except TypeError:
-            print('we take those?')
+            continue
 
         # iterate through list of circles. Make green circle around
         # circumference and small red dot at center
@@ -47,16 +45,17 @@ def findcircle(source, mindist, minrad, maxrad):
                     print('Center: (%d,%d)' % (i[0],i[1]))
                     print('Radius: %d' % i[2])
                     print('Color (RGB): (%d,%d,%d)' % (r,g,b))"""
+                    print(i)
         except TypeError:
-            print('we also take those')
+            continue
 
         # show each frame
-        cv.imshow("Feed", frame)
+        cv.imshow("Circle bois", frame)
         k = cv.waitKey(5) & 0xFF
         if k == 27:
+            cap.release()
+            cv.destroyAllWindows()
             break
-    cap.release()
-    cv.destroyAllWindows()
     return 1
 
 
