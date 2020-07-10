@@ -1,5 +1,5 @@
 # script for the basics of playing osu
-from shitti.processing.circles import houghcircle
+from ..processing import circles
 import mss
 import time
 import numpy
@@ -21,7 +21,7 @@ def run():
 
             image = numpy.array(sct.grab(monitor))
             # show the found circles
-            houghcircle(image, False)
+            circles.houghcircle(image, False, False)
             # print fps in the console
             print("fps: {}".format(1 / (time.time() - last_time)))
             if cv.waitkey(0):

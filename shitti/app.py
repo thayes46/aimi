@@ -1,5 +1,5 @@
 # this is the main runner script for shitti, the physical aimbot
 
-from shitti import osu
+from .game import osu
 
 osu.run()
