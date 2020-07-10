@@ -24,8 +24,8 @@ def findcircle(source, mindist, minrad, maxrad):
             # make sure that circle is inside the frame
             # can probably remove for Osu! but need for webcam
             print("bonjour")
-            # if i[0] in range(size[0]) and i[1] in range(size[1]):
-            #     print("test")
+            if i[0] in range(size[0]) and i[1] in range(size[1]):
+                print("test")
                 # cv.circle(frame, (i[0], i[1]), i[2], (0, 0, 255), 2)
                 # cv.circle(frame, (i[0], i[1]), 2, (0, 255, 255), 3)
                 #
