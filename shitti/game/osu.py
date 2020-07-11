@@ -1,11 +1,9 @@
-# script for the basics of playing osu
-from ..processing import circles
+from ..processing import detection
 
 
 def run():
+    # define area of screen to watch for circles
+    monitor = {'top': 0, 'left': 1920, 'width': 1920, 'height': 1080}
 
-    print('before call')
-    ret = circles.findcircle(0, 500, 0, 50)
-    for ind in ret:
-        print(ind[1])
-    print('after call')
+    # do the vision thing
+    detection.getcircle(monitor)
