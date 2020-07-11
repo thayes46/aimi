@@ -1,3 +1,5 @@
+import time
+
 import cv2 as cv
 import numpy as np
 
@@ -29,25 +31,29 @@ def findcircle(source, mindist, minrad, maxrad):
             for i in circles[0, :]:
                 # make sure that circle is inside the frame
                 # can probably remove for Osu! but need for webcam
-                if i[0] in range(size[0]) and i[1] in range(size[1]):
+                print(i)
+                if i[0] in range(size[1]) and i[1] in range(size[0]):
                     cv.circle(frame, (i[0], i[1]), i[2], (0, 0, 255), 2)
                     cv.circle(frame, (i[0], i[1]), 2, (0, 255, 255), 3)
 
                     # this should be getting the bgr values at the center of
                     # each circle
-                    b = frame.item(int(i[0]), int(i[1]), 0)
-                    g = frame.item(int(i[0]), int(i[1]), 1)
-                    r = frame.item(int(i[0]), int(i[1]), 2)
+
+                    b = frame.item(int(i[1]), int(i[0]), 0)
+                    g = frame.item(int(i[1]), int(i[0]), 1)
+                    r = frame.item(int(i[1]), int(i[0]), 2)
+                    
 
                     # return x-center, y-center, radius, r value, g value, and
                     # b value and continue running function
                     # i[0] = x, i[1] = y, i[2] = radius
                     yield [i, r, g, b]
-
+                    
                     # print centerpoint, radius, and color to console
                     print('Center: (%d,%d)' % (i[0], i[1]))
                     print('Radius: %d' % i[2])
                     print('Color (RGB): (%d,%d,%d)' % (r, g, b))
+
         except TypeError:
             continue
 
@@ -66,12 +72,12 @@ def findcircle(source, mindist, minrad, maxrad):
 def houghcircle(image, wait, printData):
     # read in image "circles.jpg" and convert to grayscale
     img = cv.imread(image)
-    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    img = cv.medianBlur(img, 5)
+    bwimg = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    bwimg = cv.medianBlur(bwimg, 5)
 
     # find circles using Hough Transform. Radius and separation values found
     # through trial and error
-    circles = cv.HoughCircles(img, cv.HOUGH_GRADIENT, 1, 200, param1=50,
+    circles = cv.HoughCircles(bwimg, cv.HOUGH_GRADIENT, 1, 200, param1=50,
                               param2=30,
                               minRadius=100, maxRadius=200)
     circles = np.uint16(np.around(circles))
