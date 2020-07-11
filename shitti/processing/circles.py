@@ -58,6 +58,7 @@ def findcircle(source, mindist, minrad, maxrad):
             continue
 
         # show each frame
+        cv.destroyAllWindows()
         cv.imshow("Circle bois", frame)
         k = cv.waitKey(5) & 0xFF
         if k == 27:
