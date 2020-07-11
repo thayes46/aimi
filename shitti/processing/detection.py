@@ -27,10 +27,10 @@ def getcircle(monitor):
         # get an array of all the circles in the frame
         ret = circles.houghcircle(image)
         for ind in ret:
-           print(ind[1])
-        FINAL = circles.drawcircles(ret, image)
+            print(ind[1])
+        final = circles.drawcircles(ret, image)
         # show where the circles are
-        cv.imshow("Circle bois", FINAL)
+        cv.imshow("Circle bois", final)
 
         # listen for ESC to yeet (hopefully)
         k = cv.waitKey(5) & 0xFF

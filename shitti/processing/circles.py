@@ -56,10 +56,11 @@ def drawcircles(circles, image):
         # can probably remove for Osu! but need for webcam
         if i[0] in range(size[1]) and i[1] in range(size[0]):
             cv.circle(image, (i[0], i[1]), i[2], (0, 0, 255), 2)
-
-            b = image.item(int(i[1]), int(i[0]), 0)
-            g = image.item(int(i[1]), int(i[0]), 1)
-            r = image.item(int(i[1]), int(i[0]), 2)
-
             cv.circle(image, (i[0], i[1]), 2, (0, 255, 255), 3)
     return image
+
+# useful for grabbing color values later
+# for i in circles[0, :]:
+# b = image.item(int(i[1]), int(i[0]), 0)
+# g = image.item(int(i[1]), int(i[0]), 1)
+# r = image.item(int(i[1]), int(i[0]), 2)
