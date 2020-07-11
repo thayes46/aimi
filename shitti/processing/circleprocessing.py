@@ -24,8 +24,10 @@ def drawcircles(circles, image):
         # make sure that circle is inside the frame
         # can probably remove for Osu! but need for webcam
         if circle[0] in range(size[1]) and circle[1] in range(size[0]):
-            cv2.circle(image, (circle[0], circle[1]), circle[2], (0, 0, 255), 2)
-            cv2.circle(image, (circle[0], circle[1]), 2, (0, 255, 255), 3)
+            cv2.circle(image, (circle[0], circle[1]),
+                       circle[2], (0, 0, 255), 2)
+            cv2.circle(image, (circle[0], circle[1]),
+                       2, (0, 255, 255), 3)
     return image
 
 

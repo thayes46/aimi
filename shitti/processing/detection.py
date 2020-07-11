@@ -31,8 +31,8 @@ def detectcircles(monitor, showcircles):
             for circle in discoveredcircles:
                 print(circle)
             if (showcircles):
-                processedframe = circleprocessing.drawcircles(discoveredcircles,
-                                                              progressframe)
+                processedframe = circleprocessing.drawcircles(
+                    discoveredcircles, progressframe)
                 cv2.imshow("Circles detected", processedframe)
         except TypeError:
             pass
