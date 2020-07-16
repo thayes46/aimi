@@ -3,6 +3,7 @@ from ..mouse import targeting
 from ..frameprocessing.circleprocessing import drawcircles
 import cv2
 
+
 def run():
     # define area of screen to watch for circles
     monitor = {'top': 0, 'left': 550, 'width': 500, 'height': 500}

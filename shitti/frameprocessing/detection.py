@@ -15,18 +15,18 @@ def detectcircles(monitor):
 
     # need to convert to numpy array
     # progressframe used for when the frame isn't being seen as image
-    progressframe = numpy.array(currentframe)
+    progressframe = array(currentframe)
 
     # print fps (after every screen grab, not after frameprocessing
     print("fps: {}".format(1 / (time.time() - last_time)))
 
     # flipping shit bc dimensions are weird
-    progressframe = numpy.flip(progressframe[:, :, :3], 2)
-    progressframe = cv2.cvtColor(progressframe, cv2.COLOR_RGB2BGR)
+    progressframe = flip(progressframe[:, :, :3], 2)
+    progressframe = cvtColor(progressframe, cv2.COLOR_RGB2BGR)
 
     try:
         # get an array of all the circles in the frame
-        discoveredcircles = circleprocessing.houghcircle(progressframe)
+        discoveredcircles = houghcircle(progressframe)
         return [discoveredcircles, progressframe]
     except TypeError:
         pass
