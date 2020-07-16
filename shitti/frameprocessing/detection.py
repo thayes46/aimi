@@ -2,7 +2,7 @@ from .circleprocessing import houghcircle
 import time
 import mss
 from numpy import flip, array
-from cv2 import cvtColor
+from cv2 import cvtColor, COLOR_RGB2BGR
 
 
 def detectcircles(monitor):
@@ -22,7 +22,7 @@ def detectcircles(monitor):
 
     # flipping shit bc dimensions are weird
     progressframe = flip(progressframe[:, :, :3], 2)
-    progressframe = cvtColor(progressframe, cv2.COLOR_RGB2BGR)
+    progressframe = cvtColor(progressframe, COLOR_RGB2BGR)
 
     try:
         # get an array of all the circles in the frame
