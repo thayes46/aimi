@@ -7,6 +7,11 @@ bus = smbus.SMBus(1)
 addressKBM = 0x04
 
 
+def dragRel(x, y, duration):
+    print("hey you didn't implement this")
+    # TODO: make this a thing
+
+
 # function to send a byte over the i2c bus
 # returns 1 if success, 0 if failed
 def sendchar(value):
