@@ -13,3 +13,8 @@ def clicktarget(targetx, targety):
     mouse.moveTo(targetx, targety, duration=.005)
     mouse.click()
     return 1
+
+
+def clickcircles(sortedcircles):
+    pass
+    # TODO: implement

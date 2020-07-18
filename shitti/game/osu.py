@@ -1,6 +1,6 @@
-from ..frameprocessing import detection
+from ..processing import detection
 from ..mouse import targeting
-from ..frameprocessing.circleprocessing import drawcircles
+from ..processing.circleprocessing import drawcircles
 from pynput import keyboard
 import cv2
 
@@ -46,7 +46,14 @@ def run():
                     cv2.imshow("Circles detected", displayframe)
                 except TypeError:
                     pass
-            # TODO: determine which circle to click and sort circles array
+
+            # TODO: Add bool to circles to see if they are a color that means
+            # TODO: that they are to be dragged until they are no longer there
+
+            # TODO: then have the below code either click or click and drag
+
+            # TODO: make the below all go into clickcircles
+
             try:
                 if circles.size > 0:
                     for eachcircle in circles[0]:

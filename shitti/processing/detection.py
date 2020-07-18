@@ -17,7 +17,7 @@ def detectcircles(monitor):
     # progressframe used for when the frame isn't being seen as image
     progressframe = array(currentframe)
 
-    # print fps (after every screen grab, not after frameprocessing
+    # print fps (after every screen grab, not after processing
     print("fps: {}".format(1 / (time.time() - last_time)))
 
     # flipping shit bc dimensions are weird
