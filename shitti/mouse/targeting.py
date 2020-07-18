@@ -6,7 +6,7 @@ import pyautogui as mouse
 
 
 def clicktarget(targetx, targety):
-    if (not mouse.onScreen(targetx, targety)):
+    if not mouse.onScreen(targetx, targety):
         print("target out of bounds")
         return 0
     mouse.moveTo(targetx, targety, durationinseconds=0.05)
