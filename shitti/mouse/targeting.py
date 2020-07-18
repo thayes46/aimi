@@ -6,7 +6,7 @@
 import pyautogui as mouse
 
 
-def clicktarget(targetx, targety):
+def click_target(targetx, targety):
     if not mouse.onScreen(targetx, targety):
         print("target out of bounds")
         return 0
@@ -15,6 +15,24 @@ def clicktarget(targetx, targety):
     return 1
 
 
-def clickcircles(sortedcircles):
-    pass
-    # TODO: implement
+def click_circles(sorted_circles, last_circle):
+    # TODO: add support if each_circle[3] is true to click and hold
+    try:
+        if sorted_circles.size > 0:
+            for each_circle in sorted_circles[0]:
+                print("Comparing for duplicates")
+                if (last_circle is None) or not \
+                        (each_circle == last_circle).any():
+                    print(f"clicking circle at {each_circle[0]}"
+                          f", {each_circle[1]}")
+                    click_target(each_circle[0], each_circle[1])
+                    if last_circle is None:
+                        last_circle = each_circle
+                    else:
+                        last_circle = each_circle.copy()
+                else:
+                    print(f"already clicked circle at "
+                          f"{each_circle[0]}, {each_circle[1]}")
+            return last_circle
+    except AttributeError:
+        pass

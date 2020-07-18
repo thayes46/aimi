@@ -1,6 +1,6 @@
-from ..processing import detection
+from ..processing import detection, prioritization
 from ..mouse import targeting
-from ..processing.circleprocessing import drawcircles
+from ..processing.circleprocessing import draw_circles
 from pynput import keyboard
 import cv2
 
@@ -14,7 +14,7 @@ def run():
 
     running = True
     # Variable to control whether a window is shown or not
-    showcircles = False
+    show_window = False
 
     # Probably shouldn't just let this thing run buck wild
     print("You are about to let this program take control of your mouse.\n"
@@ -22,8 +22,8 @@ def run():
     print(monitor)
     print("If everything is prepared type \"ok\". "
           "Type anything else to quit")
-    typedinput = input()
-    if typedinput == "ok":
+    typed_input = input()
+    if typed_input == "ok":
         print("Ok. Starting. Press ESCAPE at any time to stop")
     else:
         print("Exiting")
@@ -34,50 +34,33 @@ def run():
     with keyboard.Listener(
             on_press=on_press,
             on_release=on_release) as listener:
-        # Main game loop
-        lastcircle = None
+
+        # Main loop
+        last_target = None
         while running and not break_program:
-            detectionresults = detection.detectcircles(monitor)
-            circles = detectionresults[0]
-            if showcircles:
+            detection_results = detection.detect_circles(monitor)
+            targets = detection_results[0]
+
+            # show the window if you want, not recommended while also clicking
+            if show_window:
                 try:
-                    progressframe = detectionresults[1]
-                    displayframe = drawcircles(circles, progressframe)
-                    cv2.imshow("Circles detected", displayframe)
+                    progress_frame = detection_results[1]
+                    display_frame = draw_circles(targets, progress_frame)
+                    cv2.imshow("Circles detected", display_frame)
                 except TypeError:
                     pass
 
-            # TODO: Add bool to circles to see if they are a color that means
-            # TODO: that they are to be dragged until they are no longer there
+            # prioritize targets and click em
+            sorted_targets = prioritization.sort_targets(targets)
+            last_target = targeting.click_circles(sorted_targets, last_target)
 
-            # TODO: then have the below code either click or click and drag
-
-            # TODO: make the below all go into clickcircles
-
-            try:
-                if circles.size > 0:
-                    for eachcircle in circles[0]:
-                        print("Comparing for duplicates")
-                        if (lastcircle is None) or not \
-                                (eachcircle == lastcircle).any():
-                            print(f"clicking circle at {eachcircle[0]}"
-                                  f", {eachcircle[1]}")
-                            targeting.clicktarget(eachcircle[0], eachcircle[1])
-                            if lastcircle is None:
-                                lastcircle = eachcircle
-                            else:
-                                lastcircle = eachcircle.copy()
-                        else:
-                            print(f"already clicked circle at "
-                                  f"{eachcircle[0]}, {eachcircle[1]}")
-                            pass
-            except AttributeError:
-                pass
             # cv window is kil
-            escapekey = cv2.waitKey(25) & 0xFF
-            if escapekey == 27:
+            escape_key = cv2.waitKey(25) & 0xFF
+            if escape_key == 27:
                 cv2.destroyAllWindows()
                 running = False
+
+        # idk why it has to be at this level, doesn't make sense but it works
         listener.join()
 
 

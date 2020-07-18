@@ -2,4 +2,6 @@
 
 from .game import osu
 
-osu.run()
+
+def run():
+    osu.run()

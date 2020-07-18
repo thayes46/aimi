@@ -3,11 +3,12 @@ import numpy
 
 
 # finding circles for a still image
-def houghcircle(image):
+def hough_circle(image):
     # turn to black and white for hough circles
-    greyimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    greyimage = cv2.medianBlur(greyimage, 5)
-    circles = cv2.HoughCircles(greyimage, cv2.HOUGH_GRADIENT, 1, 50, param1=50,
+    grey_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    grey_image = cv2.medianBlur(grey_image, 5)
+    circles = cv2.HoughCircles(grey_image, cv2.HOUGH_GRADIENT, 1, 50,
+                               param1=50,
                                param2=30,
                                minRadius=7, maxRadius=90)
     try:
@@ -18,7 +19,7 @@ def houghcircle(image):
 
 
 # helper function to check for bounds and draw the circles
-def drawcircles(circles, image):
+def draw_circles(circles, image):
     size = image.shape
     for circle in circles[0, :]:
         # make sure that circle is inside the frame
@@ -39,6 +40,7 @@ def drawcircles(circles, image):
 
 # finding circles given video feed
 # NOT IN USE
+"""
 def findcircle(source, mindist, minrad, maxrad):
     # start capturing video. 0 is onboard webcam, will need to change that for
     # Capture Card
@@ -56,7 +58,7 @@ def findcircle(source, mindist, minrad, maxrad):
                                    maxRadius=maxrad)
         try:
             circles = numpy.uint16(numpy.around(circles))
-            yield drawcircles(circles, currentframe)
+            yield draw_circles(circles, currentframe)
         except TypeError:
             continue
         # show each frame
@@ -67,3 +69,4 @@ def findcircle(source, mindist, minrad, maxrad):
             cv2.destroyAllWindows()
             break
     return 1
+"""
