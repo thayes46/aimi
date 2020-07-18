@@ -5,7 +5,7 @@ from pynput import keyboard
 import cv2
 
 break_program = False
-monitor = {'top': 0, 'left': 550, 'width': 500, 'height': 500}
+monitor = {'top': 60, 'left': 60, 'width': 1000, 'height': 800}
 
 
 def run():
@@ -29,31 +29,33 @@ def run():
     with keyboard.Listener(
             on_press=on_press,
             on_release=on_release) as listener:
-        listener.join()
-        while not break_program:
-            print("waiting")
-        return 0
-
-    while running:
-        detectionresults = detection.detectcircles(monitor)
-        circles = detectionresults[0]
-        if showcircles:
+        print("listening for inputs")
+        while running:
+            detectionresults = detection.detectcircles(monitor)
+            circles = detectionresults[0]
+            if showcircles:
+                try:
+                    progressframe = detectionresults[1]
+                    displayframe = drawcircles(circles, progressframe)
+                    cv2.imshow("Circles detected", displayframe)
+                except TypeError:
+                    pass
+            # tell the mouse to go to the biggest circle
+            # TODO: determine which circle to click
             try:
-                progressframe = detectionresults[1]
-                displayframe = drawcircles(circles, progressframe)
-                cv2.imshow("Circles detected", displayframe)
-            except TypeError:
+                if circles.size > 0:
+                    for eachcircle in circles[0]:
+                        print("clicking circle:")
+                        print(eachcircle)
+                        targeting.clicktarget(eachcircle[0], eachcircle[1])
+            except AttributeError:
                 pass
-        # tell the mouse to go to the biggest circle
-        # TODO: determine which circle to click
-        for eachcircle in circles:
-            targeting.clicktarget(eachcircle[0], eachcircle[1])
-
-        # cv window is kil
-        escapekey = cv2.waitKey(25) & 0xFF
-        if escapekey == 27:
-            cv2.destroyAllWindows()
-            running = False
+            # cv window is kil
+            escapekey = cv2.waitKey(25) & 0xFF
+            if escapekey == 27:
+                cv2.destroyAllWindows()
+                running = False
+            listener.join()
 
 
 # Can't quite tell how to abstract this to an API call yet.
