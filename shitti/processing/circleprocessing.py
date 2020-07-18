@@ -39,7 +39,7 @@ def draw_circles(circles, image):
 # r = image.item(int(i[1]), int(i[0]), 2)
 
 # finding circles given video feed
-# NOT IN USE
+# NOT IN USE, until using camera
 """
 def findcircle(source, mindist, minrad, maxrad):
     # start capturing video. 0 is onboard webcam, will need to change that for
