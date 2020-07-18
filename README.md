@@ -1,5 +1,8 @@
 # corys-shitti-robot
-Physical aimbot for [Counter-Strike: Global Offensive](https://blog.counter-strike.net).
+Physical aimbot for [Osu!](https://osu.ppy.sh/home). Eventually to be used for FPS games such as [Valorant](https://playvalorant.com/en-us/).
+This bot does not interact with the game's files at all, and instead uses only a visual input, currently a screengrab, to detect targets and click them in time
+
+Void EULA of any title at your own risk
 
 ## Raspbery Pi setup
 Enable I2C connections on the Pi in the config:
