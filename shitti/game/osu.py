@@ -5,15 +5,18 @@ from pynput import keyboard
 import cv2
 
 break_program = False
-monitor = {'top': 60, 'left': 60, 'width': 1000, 'height': 800}
+monitor = {'top': 60, 'left': 0, 'width': 1819, 'height': 979}
 
 
 def run():
     global monitor
+    global break_program
+
     running = True
     # Variable to control whether a window is shown or not
-    showcircles = True
+    showcircles = False
 
+    # Probably shouldn't just let this thing run buck wild
     print("You are about to let this program take control of your mouse.\n"
           "It will click in this region:")
     print(monitor)
@@ -25,12 +28,15 @@ def run():
     else:
         print("Exiting")
         return 0
-    global break_program
+
+    # listen to all keyboard inputs so that esc at any point past here will
+    # stop it, call it a failsafe if you want
     with keyboard.Listener(
             on_press=on_press,
             on_release=on_release) as listener:
-        print("listening for inputs")
-        while running:
+        # Main game loop
+        lastcircle = None
+        while running and not break_program:
             detectionresults = detection.detectcircles(monitor)
             circles = detectionresults[0]
             if showcircles:
@@ -40,14 +46,24 @@ def run():
                     cv2.imshow("Circles detected", displayframe)
                 except TypeError:
                     pass
-            # tell the mouse to go to the biggest circle
-            # TODO: determine which circle to click
+            # TODO: determine which circle to click and sort circles array
             try:
                 if circles.size > 0:
                     for eachcircle in circles[0]:
-                        print("clicking circle:")
-                        print(eachcircle)
-                        targeting.clicktarget(eachcircle[0], eachcircle[1])
+                        print("Comparing for duplicates")
+                        if (lastcircle is None) or not \
+                                (eachcircle == lastcircle).any():
+                            print(f"clicking circle at {eachcircle[0]}"
+                                  f", {eachcircle[1]}")
+                            targeting.clicktarget(eachcircle[0], eachcircle[1])
+                            if lastcircle is None:
+                                lastcircle = eachcircle
+                            else:
+                                lastcircle = eachcircle.copy()
+                        else:
+                            print(f"already clicked circle at "
+                                  f"{eachcircle[0]}, {eachcircle[1]}")
+                            pass
             except AttributeError:
                 pass
             # cv window is kil
@@ -55,7 +71,7 @@ def run():
             if escapekey == 27:
                 cv2.destroyAllWindows()
                 running = False
-            listener.join()
+        listener.join()
 
 
 # Can't quite tell how to abstract this to an API call yet.
