@@ -3,13 +3,14 @@
 
 # from ..i2c import kbm as mouse
 from pynput.mouse import Button, Controller
+
 mouse = Controller()
 
 def click_target(targetx, targety):
     # if not mouse.onScreen(targetx, targety):
     #     print("target out of bounds")
     #     return 0
-    mouse.position = (targetx, targety);
+    mouse.position = (targetx, targety)
     mouse.press(Button.left)
     mouse.release(Button.left)
     return 1
