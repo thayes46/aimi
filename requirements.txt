@@ -5,4 +5,3 @@ smbus==1.1.post2
 flake8==3.8.3
 pytest==5.4.3
 mss==6.0.0
-pynput~=1.6.8
