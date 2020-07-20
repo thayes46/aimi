@@ -65,7 +65,7 @@ def run():
 
 
 # Can't quite tell how to abstract this to an API call yet.
-# TODO: Abstract the below
+# TODO: Abstract the code below
 
 def on_press(key):
     print('{0} pressed'.format(

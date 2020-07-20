@@ -9,7 +9,7 @@ addressKBM = 0x04
 
 def drag_rel(x, y, duration):
     print("hey you didn't implement this")
-    # TODO: make this a thing
+    # TODO: make this actually a thing
 
 
 # function to send a byte over the i2c bus
