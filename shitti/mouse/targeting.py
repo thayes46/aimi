@@ -6,6 +6,7 @@ from pynput.mouse import Button, Controller
 
 mouse = Controller()
 
+
 def click_target(targetx, targety):
     # if not mouse.onScreen(targetx, targety):
     #     print("target out of bounds")
