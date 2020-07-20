@@ -1,17 +1,15 @@
+from pynput import keyboard
 from ..processing import detection, prioritization
 from ..mouse import targeting
 from ..processing.circleprocessing import draw_circles
-from pynput import keyboard
+from ..keyboard.listener import break_program, on_press, on_release
 import cv2
 
-break_program = False
 monitor = {'top': 60, 'left': 0, 'width': 1819, 'height': 979}
 
 
 def run():
     global monitor
-    global break_program
-
     running = True
     # Variable to control whether a window is shown or not
     show_window = False
@@ -33,7 +31,7 @@ def run():
     # stop it, call it a failsafe if you want
     with keyboard.Listener(
             on_press=on_press,
-            on_release=on_release) as listener:
+            on_release=on_release) as listening:
 
         # Main loop
         last_target = None
@@ -61,18 +59,4 @@ def run():
                 running = False
 
         # idk why it has to be at this level, doesn't make sense but it works
-        listener.join()
-
-
-# TODO: Abstract the code below
-
-def on_press(key):
-    print('{0} pressed'.format(
-        key))
-
-
-def on_release(key):
-    global break_program
-    if key == keyboard.Key.esc:
-        break_program = True
-        return False
+        listening.join()
