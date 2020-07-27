@@ -1,0 +1,7 @@
+numpy==1.19.1
+opencv-python==4.3.0.36
+pynput==1.6.8
+smbus==1.1.post2
+flake8==3.8.3
+pytest==5.4.3
+mss==6.0.0
