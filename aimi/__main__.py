@@ -1,4 +1,4 @@
-from shitti import app
+from aimi import app
 
 if __name__ == '__main__':
     app.run()

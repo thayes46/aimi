@@ -1,4 +1,4 @@
-numpy==1.19.0
+numpy==1.19.1
 opencv-python==4.3.0.36
 pynput==1.6.8
 smbus==1.1.post2

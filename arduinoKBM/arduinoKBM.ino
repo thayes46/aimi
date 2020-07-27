@@ -1,5 +1,5 @@
 /*
- * Arduino KBM for corys-shitty-robot
+ * Arduino KBM for aimi
  */
 #include <Keyboard.h>
 #include <Mouse.h>
