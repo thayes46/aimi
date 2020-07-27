@@ -1,4 +1,4 @@
-# corys-shitti-robot
+# Aimi
 Physical aimbot for [Osu!](https://osu.ppy.sh/home). Eventually to be used for FPS games such as [Valorant](https://playvalorant.com/en-us/).
 This bot does not interact with the game's files at all, and instead uses only a visual input, currently a screengrab, to detect targets and click them in time
 
@@ -12,7 +12,7 @@ sudo raspi-config
 
 Install this repo:
 ```
-git clone https://github.com/thayes46/corys-shitty-robot.git
+git clone https://github.com/thayes46/aimi.git
 ```
 
 Install all dependent packages:
