@@ -5,7 +5,7 @@ from numpy import flip, array
 import cv2 as cv
 
 
-def detect_circles(monitor, init = False):
+def detect_circles(monitor, init=False):
     screen = mss.mss()
     # get time for framerate math
     last_time = time.time()
@@ -25,21 +25,21 @@ def detect_circles(monitor, init = False):
     progress_frame = cv.cvtColor(progress_frame, cv.COLOR_RGB2HSV)
 
     # limits of "red". Pure red is 0,255,255
-    lower_red = array([0,150,150])
-    upper_red = array([10,255,255])
+    lower_red = array([0, 150, 150])
+    upper_red = array([10, 255, 255])
 
     # mask creation and application
     mask = cv.inRange(progress_frame, lower_red, upper_red)
 
     # if init is False, invert mask
-    if init == False:
-        mask = cv.bitwise_not(mask,mask)
+    if init is False:
+        mask = cv.bitwise_not(mask, mask)
 
-    # filter frame, either only show red or show everything but red    
+    # filter frame, either only show red or show everything but red
     progress_frame = cv.bitwise_and(progress_frame, progress_frame, mask=mask)
 
     # change colorspace for use in hough_circle
-    progress_frame = cv.cvtColor(progress_Frame, cv.COLOR_HSV2RGB)
+    progress_frame = cv.cvtColor(progress_frame, cv.COLOR_HSV2RGB)
 
     try:
         # get an array of all the circles in the frame
