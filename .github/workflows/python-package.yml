@@ -5,7 +5,7 @@ name: Actions adventure
 
 on:
   push:
-    branches: [ master, Osu ]
+    branches: [ master, osu ]
   pull_request:
     branches: [ master ]
 
