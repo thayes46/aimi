@@ -1,6 +1,7 @@
 from numpy import array
 from cv2 import inRange, cvtColor, COLOR_RGB2HSV
 
+
 # sorts list of circles based on radius
 def sort_targets(targets):
     targets[targets[:, 2].argsort()]
