@@ -3,8 +3,9 @@ from cv2 import inRange, cvtColor, COLOR_RGB2HSV
 
 # sorts list of circles based on radius
 def sort_targets(targets):
-    targets[targets[:,2].argsort()]
+    targets[targets[:, 2].argsort()]
     return targets
+
 
 # checks if there is white on the screen indicating a slider
 # to be called after initial click
