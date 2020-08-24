@@ -44,7 +44,7 @@ def detect_circles(monitor, init=False):
     try:
         # get an array of all the circles in the frame
         discovered_circles = hough_circle(progress_frame)
-        
+
         # remove weird nesting
         discovered_circles = discovered_circles[0]
         return [discovered_circles, progress_frame]
