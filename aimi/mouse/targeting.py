@@ -22,6 +22,7 @@ def click_circles(sorted_circles, last_circle):
     try:
         if sorted_circles.size > 0:
             for each_circle in sorted_circles[0]:
+                print("Circle at ", each_circle)
                 print("Comparing for duplicates")
                 if (last_circle is None) or not \
                         (each_circle == last_circle).any():
