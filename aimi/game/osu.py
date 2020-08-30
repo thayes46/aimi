@@ -5,7 +5,9 @@ from ..processing.circleprocessing import draw_circles
 from ..keyboard.listener import break_program, on_press, on_release
 import cv2
 
-monitor = {'top': 60, 'left': 0, 'width': 1819, 'height': 979}
+# left: 1920 is for testing and forcing to scan display without any noi se
+
+monitor = {'top': 60, 'left': 1920, 'width': 1819, 'height': 979}
 
 
 def run():
@@ -37,20 +39,25 @@ def run():
         last_target = None
         while running and not break_program:
             detection_results = detection.detect_circles(monitor)
-            targets = detection_results[0]
+            # try will succeed
+            try:
+                # circle array is 0th element
+                targets = detection_results[0]
 
-            # show the window if you want, not recommended while also clicking
-            if show_window:
-                try:
+                # show the window with tracing if you want, not recommended
+                if show_window:
+                    # frame is 1st element
                     progress_frame = detection_results[1]
                     display_frame = draw_circles(targets, progress_frame)
                     cv2.imshow("Circles detected", display_frame)
-                except TypeError:
-                    pass
 
-            # prioritize targets and click em
-            sorted_targets = prioritization.sort_targets(targets)
-            last_target = targeting.click_circles(sorted_targets, last_target)
+                # prioritize targets and click em
+                sorted_targets = prioritization.sort_targets(targets)
+                last_target = targeting.click_circles(sorted_targets,
+                                                      last_target)
+            except TypeError:
+                # Will only fall here when there are no circles at all
+                pass
 
             # cv window is kil
             escape_key = cv2.waitKey(25) & 0xFF

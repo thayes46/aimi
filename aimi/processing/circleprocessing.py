@@ -5,7 +5,7 @@ import numpy
 # finding circles for a still image
 def hough_circle(image):
     # turn to black and white for hough circles
-    grey_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    grey_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     grey_image = cv2.medianBlur(grey_image, 5)
     circles = cv2.HoughCircles(grey_image, cv2.HOUGH_GRADIENT, 1, 50,
                                param1=50,
