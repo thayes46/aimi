@@ -41,10 +41,12 @@ def run():
             detection_results = detection.detect_circles(monitor)
             # try will succeed
             try:
+                # circle array is 0th element
                 targets = detection_results[0]
 
                 # show the window with tracing if you want, not recommended while also clicking
                 if show_window:
+                    # frame is 1st element
                     progress_frame = detection_results[1]
                     display_frame = draw_circles(targets, progress_frame)
                     cv2.imshow("Circles detected", display_frame)

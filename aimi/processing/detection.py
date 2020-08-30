@@ -46,7 +46,7 @@ def detect_circles(monitor, init=False):
         discovered_circles = hough_circle(progress_frame)
 
         # remove weird nesting
-        if discovered_circles.size > 1:
+        if discovered_circles[0].size > 1:
             discovered_circles = discovered_circles[0]
         return [discovered_circles, progress_frame]
     except TypeError:
