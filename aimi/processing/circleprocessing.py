@@ -15,7 +15,7 @@ def hough_circle(image):
         return numpy.uint16(numpy.around(circles))
     except TypeError:
         # it gets angry if there aren't any circles
-        print('ruh ro, no circles here')
+        pass
 
 
 # helper function to check for bounds and draw the circles
