@@ -5,7 +5,9 @@ from ..processing.circleprocessing import draw_circles
 from ..keyboard.listener import break_program, on_press, on_release
 import cv2
 
-monitor = {'top': 60, 'left': 0, 'width': 1819, 'height': 979}
+# left: 1920 is for testing and forcing to scan display without any noise
+
+monitor = {'top': 60, 'left': 1920, 'width': 1819, 'height': 979}
 
 
 def run():
