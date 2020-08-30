@@ -44,7 +44,7 @@ def run():
                 # circle array is 0th element
                 targets = detection_results[0]
 
-                # show the window with tracing if you want, not recommended while also clicking
+                # show the window with tracing if you want, not recommended
                 if show_window:
                     # frame is 1st element
                     progress_frame = detection_results[1]
@@ -53,9 +53,10 @@ def run():
 
                 # prioritize targets and click em
                 sorted_targets = prioritization.sort_targets(targets)
-                last_target = targeting.click_circles(sorted_targets, last_target)
+                last_target = targeting.click_circles(sorted_targets,
+                                                      last_target)
             except TypeError:
-                # Will only fall here when there are no circles on the screen at all
+                # Will only fall here when there are no circles at all
                 pass
 
             # cv window is kil
