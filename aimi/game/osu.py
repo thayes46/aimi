@@ -37,7 +37,7 @@ def run():
 
         # Main loop
         last_target = None
-        frame_count = 0
+        # frame_count = 0 # Don't remember what this was for...
         while running and not break_program:
             detection_results = detection.detect_circles(monitor)
             # try will succeed
