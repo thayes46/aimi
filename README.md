@@ -18,7 +18,7 @@ git clone https://github.com/thayes46/aimi.git
 
 Install all dependent packages:
 ```
-pip3 install --upgrade pip
+python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 ```
 
