@@ -5,7 +5,7 @@ This bot does not interact with the game's files at all, and instead uses only a
 Void EULA of any title at your own risk
 
 ## Computer setup
-###This is designed for linux 3.x+, tested on Ubuntu 18.04
+### This is designed for linux 3.x+, tested on Ubuntu 18.04
 Enable I2C connections on the Pi in the config:
 ```
 sudo raspi-config
@@ -22,7 +22,7 @@ python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 ```
 
-###***NOTE: Do not proceed without reading the prompts when running the program
+### ***NOTE: Do not proceed without reading the prompts when running the program
 Run the main program from this directory:
 ```
 python3 -m aimi
