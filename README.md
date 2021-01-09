@@ -4,7 +4,8 @@ This bot does not interact with the game's files at all, and instead uses only a
 
 Void EULA of any title at your own risk
 
-## Raspbery Pi setup
+## Computer setup
+###This is designed for linux 3.x+, tested on Ubuntu 18.04
 Enable I2C connections on the Pi in the config:
 ```
 sudo raspi-config
@@ -17,7 +18,14 @@ git clone https://github.com/thayes46/aimi.git
 
 Install all dependent packages:
 ```
+pip3 install --upgrade pip
 python3 -m pip install -r requirements.txt
+```
+
+###***NOTE: Do not proceed without reading the prompts when running the program
+Run the main program from this directory:
+```
+python3 -m aimi
 ```
 
 ## How to Load Arduino Micro for Keyboard and Mouse Simulation
@@ -46,3 +54,6 @@ If you receive an error along the lines of `permission denied: /dev/tty/USBn or 
 ```
 sudo adduser [your_username] dialout
 ```
+If that fails as well, add your user to the group through this line instead:
+``````
+sudo usermod -a -G dialout [your_username]

@@ -7,7 +7,7 @@ import cv2
 
 # left: 1920 is for testing and forcing to scan display without any noi se
 
-monitor = {'top': 60, 'left': 1920, 'width': 1919, 'height': 1019}
+monitor = {'top': 0, 'left': 0, 'width': 1919, 'height': 1019}
 
 
 def run():
