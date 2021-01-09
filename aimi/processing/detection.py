@@ -18,7 +18,8 @@ def detect_circles(monitor, init=False):
     progress_frame = array(current_frame)
 
     # print fps (after every screen grab, not after processing
-    print("fps: {}".format(1 / (time.time() - last_time)))
+    if (1 / (time.time() - last_time)) < 60:
+        print("fps low: {}".format(1 / (time.time() - last_time)))
 
     # flipping shit bc dimensions are weird
     progress_frame = flip(progress_frame[:, :, :3], 2)
