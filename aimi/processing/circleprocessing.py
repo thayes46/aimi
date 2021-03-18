@@ -34,11 +34,11 @@ def draw_circles(circles, image):
                     cv2.circle(image, (circle[0], circle[1]),
                                2, (0, 255, 255), 3)
     except IndexError:
-            if circles[0] in range(size[1]) and circles[1] in range(size[0]):
-                cv2.circle(image, (circles[0], circles[1]),
-                           circles[2], (0, 0, 255), 2)
-                cv2.circle(image, (circles[0], circles[1]),
-                           2, (0, 255, 255), 3)
+        if circles[0] in range(size[1]) and circles[1] in range(size[0]):
+            cv2.circle(image, (circles[0], circles[1]),
+                       circles[2], (0, 0, 255), 2)
+            cv2.circle(image, (circles[0], circles[1]),
+                       2, (0, 255, 255), 3)
 
     return image
 

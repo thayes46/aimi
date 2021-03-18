@@ -4,7 +4,8 @@
 # from ..i2c import kbm as mouse
 from pynput.mouse import Button, Controller
 from ..processing.circleprocessing import draw_circles
-import os, cv2
+import os
+import cv2
 
 mouse = Controller()
 
@@ -23,15 +24,16 @@ def click_target(targetx, targety):
 
 def click_circles(sorted_circles, last_circle, frame):
     # TODO: add support if each_circle[3] is true to hold the click
+    global image_ID
     try:
         if sorted_circles.size > 0:
             for each_circle in sorted_circles:
                 print("Circle at ", each_circle)
-                if (last_circle is None) or not (each_circle[0] == last_circle[0] and each_circle[1] == last_circle[1]):
+                if (last_circle is None) or not \
+                        (each_circle[0] == last_circle[0] and each_circle[1] == last_circle[1]):
                     print(f"clicking circle at {each_circle[0]}"
                           f", {each_circle[1]}")
                     click_target(each_circle[0], each_circle[1])
-                    # TODO: save image from clicked circle for verification
                     circle = each_circle
                     annotated_frame = draw_circles(circle, frame)
                     impath = "" + str(image_ID) + ".jpg"

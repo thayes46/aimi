@@ -53,11 +53,11 @@ def run():
                     cv2.imshow("Circles detected", display_frame)
 
                 # prioritize targets and click em
-                # sorted_targets = prioritization.sort_targets(targets)
-                sorted_targets = targets
+                sorted_targets = prioritization.sort_targets(targets)
                 print(f"previous last target is {last_target}")
                 last_target = targeting.click_circles(sorted_targets,
-                                                      last_target, detection_results[1])
+                                                      last_target,
+                                                      detection_results[1])
                 print(f"new last target is {last_target}")
             except TypeError as e:
                 # Will only fall here when there are no circles at all
