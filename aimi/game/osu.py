@@ -7,7 +7,7 @@ import cv2
 
 # left: 1920 is for testing and forcing to scan display without any noi se
 
-monitor = {'top': 0, 'left': 0, 'width': 1919, 'height': 1019}
+monitor = {'top': 0, 'left': 0, 'width': 1000, 'height': 1000}
 
 
 def run():
@@ -53,11 +53,15 @@ def run():
                     cv2.imshow("Circles detected", display_frame)
 
                 # prioritize targets and click em
-                sorted_targets = prioritization.sort_targets(targets)
+                # sorted_targets = prioritization.sort_targets(targets)
+                sorted_targets = targets
+                print(f"previous last target is {last_target}")
                 last_target = targeting.click_circles(sorted_targets,
-                                                      last_target)
-            except TypeError:
+                                                      last_target, detection_results[1])
+                print(f"new last target is {last_target}")
+            except TypeError as e:
                 # Will only fall here when there are no circles at all
+                print(f"Hit typeError in main loop: {e}")
                 pass
 
             # cv window is kil
