@@ -30,7 +30,8 @@ def click_circles(sorted_circles, last_circle, frame):
             for each_circle in sorted_circles:
                 print("Circle at ", each_circle)
                 if (last_circle is None) or not \
-                        (each_circle[0] == last_circle[0] and each_circle[1] == last_circle[1]):
+                        (each_circle[0] == last_circle[0] and
+                         each_circle[1] == last_circle[1]):
                     print(f"clicking circle at {each_circle[0]}"
                           f", {each_circle[1]}")
                     click_target(each_circle[0], each_circle[1])
