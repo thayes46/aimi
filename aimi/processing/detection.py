@@ -31,7 +31,7 @@ def detect_circles(monitor, init=False):
 
     # mask creation and application
     mask = cv.inRange(progress_frame, lower_red, upper_red)
-
+    # TODO: also create mask for green outer circles
     # if init is False, invert mask
     if init is False:
         mask = cv.bitwise_not(mask, mask)
