@@ -28,6 +28,7 @@ def run():
           "look for circles and click. Close the transparent window when you\n"
           "are ready")
 
+    ### Grab visual area on screen that it is allowed to look at and click
     root = tkinter.Tk()
     root.geometry('1000x1000')
     root.wait_visibility(root)
@@ -46,10 +47,8 @@ def run():
     top = int(dimensions[-1])
     left = int(dimensions[-2])
     dimensions = dimensions[0].split("x")
-
     monitor = {'top': top, 'left': left,
-               'width': dimensions[0], 'height': dimensions[1]}
-    print(monitor)
+               'width': int(dimensions[0]), 'height': int(dimensions[1])}
 
     print("If everything is prepared type \"ok\". "
           "Type anything else to quit")
@@ -60,6 +59,7 @@ def run():
         print("Exiting")
         return 0
 
+    ### main loop
     # listen to all keyboard inputs so that esc at any point past here will
     # stop it, call it a failsafe if you want
     with keyboard.Listener(
@@ -70,6 +70,7 @@ def run():
             last_target = None
             # frame_count = 0 # Don't remember what this was for...
             while running and not break_program:
+                print(f"monitor:{monitor}")
                 detection_results = detection.detect_circles(monitor)
                 # try will succeed
                 try:
