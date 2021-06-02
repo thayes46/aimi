@@ -40,7 +40,7 @@ def click_circles(sorted_circles, last_circle, frame):
                     impath = "" + str(image_ID) + ".jpg"
                     print(f"Writing image {impath}")
                     image_ID = image_ID + 1
-                    cv2.imwrite(impath, annotated_frame)
+                    # cv2.imwrite(impath, annotated_frame)
                     if last_circle is None:
                         last_circle = each_circle
                     else:
