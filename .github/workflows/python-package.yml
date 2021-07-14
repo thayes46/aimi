@@ -4,10 +4,8 @@
 name: Actions adventure
 
 on:
-  push:
-    branches: [ master, osu ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, * ]
 
 jobs:
   build:
