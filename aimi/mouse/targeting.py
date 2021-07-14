@@ -37,7 +37,6 @@ def click_circles(sorted_circles, last_circle, frame):
                           f", {each_circle[1]}")
                     click_target(each_circle[0], each_circle[1])
 
-
                     impath = "" + str(image_ID) + ".jpg"
                     print(f"Writing image {impath}")
                     image_ID = image_ID + 1
