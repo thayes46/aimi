@@ -1,0 +1,6 @@
+[packages]
+numpy = "1.19.2"
+opencv-python = "4.3.0.38"
+pynput = "1.6.8"
+smbus = "1.1.post2"
+mss = "6.0.0"
