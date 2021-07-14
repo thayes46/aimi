@@ -36,12 +36,13 @@ def click_circles(sorted_circles, last_circle, frame):
                     print(f"clicking circle at {each_circle[0]}"
                           f", {each_circle[1]}")
                     click_target(each_circle[0], each_circle[1])
-                    circle = each_circle
+
 
                     impath = "" + str(image_ID) + ".jpg"
                     print(f"Writing image {impath}")
                     image_ID = image_ID + 1
 
+                    # circle = each_circle
                     # annotated_frame = draw_circles(circle, frame)
                     # cv2.imwrite(impath, annotated_frame)
                     if last_circle is None:
