@@ -16,16 +16,11 @@ Install this repo:
 git clone https://github.com/thayes46/aimi.git
 ```
 
-Install all dependent packages:
-```
-python3 -m pip install --upgrade pip
-python3 -m pip install -r requirements.txt
-```
 
 ### ***NOTE: Do not proceed without reading the prompts when running the program
 Run the main program from this directory:
 ```
-python3 -m aimi
+make run
 ```
 
 ## How to Load Arduino Micro for Keyboard and Mouse Simulation
