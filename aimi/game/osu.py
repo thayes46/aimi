@@ -13,11 +13,12 @@ from tkinter import messagebox
 
 # Variable to control whether a window is shown or not
 show_window = False
-testing_mode = False
+
 monitor = None
 
 
-def run():
+def run(isTestMode):
+    testing_mode = isTestMode
     global monitor
     running = True
 

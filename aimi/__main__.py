@@ -1,4 +1,8 @@
 from aimi import app
+import sys
 
 if __name__ == '__main__':
-    app.run()
+    if sys.argv[-1] == "-t":
+        app.run(True)
+    else:
+        app.run(False)

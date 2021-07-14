@@ -3,5 +3,5 @@
 from .game import osu
 
 
-def run():
-    osu.run()
+def run(testing):
+    osu.run(testing)
