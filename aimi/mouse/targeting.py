@@ -5,7 +5,7 @@
 from pynput.mouse import Button, Controller
 from ..processing.circleprocessing import draw_circles
 import os
-import cv2
+# import cv2
 
 mouse = Controller()
 
@@ -36,10 +36,12 @@ def click_circles(sorted_circles, last_circle, frame):
                           f", {each_circle[1]}")
                     click_target(each_circle[0], each_circle[1])
                     circle = each_circle
-                    annotated_frame = draw_circles(circle, frame)
+
                     impath = "" + str(image_ID) + ".jpg"
                     print(f"Writing image {impath}")
                     image_ID = image_ID + 1
+
+                    # annotated_frame = draw_circles(circle, frame)
                     # cv2.imwrite(impath, annotated_frame)
                     if last_circle is None:
                         last_circle = each_circle

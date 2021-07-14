@@ -28,7 +28,7 @@ def run():
           "look for circles and click. Close the transparent window when you\n"
           "are ready")
 
-    ### Grab visual area on screen that it is allowed to look at and click
+    # Grab visual area on screen that it is allowed to look at and click
     root = tkinter.Tk()
     root.geometry('1000x1000')
     root.wait_visibility(root)
@@ -59,7 +59,7 @@ def run():
         print("Exiting")
         return 0
 
-    ### main loop
+    # main loop
     # listen to all keyboard inputs so that esc at any point past here will
     # stop it, call it a failsafe if you want
     with keyboard.Listener(
